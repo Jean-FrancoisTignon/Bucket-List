@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>About us</h2>
+    <section class="team-members">
+        {% for donnee in donnees %}
+            <article>
+                <img src="{{ donnee.picture }}" alt="{{ donnee.lastname }}">
+                <div>
+                    <h3>
+                        {{ donnee.firstname }} {{ donnee.lastname }} {{ donnee.firstname == "Fabien" ? "&#128151": ""}} ( {{ donnee.dateOfBirth|date("d-m-y")}} )
+                    </h3>
+                    <p>créateur de {{ donnee.creatorOf }}</p>
+                    <p>{{ donnee.description }}</p>
+                </div>
+            </article>
+         {% endfor %}
+    </section>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} | About us
+{% endblock %}
+
