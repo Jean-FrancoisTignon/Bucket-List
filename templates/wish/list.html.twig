@@ -2,7 +2,13 @@
 
 {% block body %}
     <h2>All wishes</h2>
-    Contenu de la page "List" en cours de création
+    <section class="wish-list">
+        {% for wish in wishes %}
+            <article>
+                <a href="{{ path('app_wish_detail', {'id': wish.id}) }}" title="detail">{{ wish.title }}</a>
+            </article>
+        {% endfor %}
+    </section>
 {% endblock %}
 
 {% block title %}

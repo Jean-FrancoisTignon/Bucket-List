@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ parent() }} | Titre de l'idée
+    {{ parent() }} | {{ wish.title }}
 {% endblock %}
 
 {% block body %}
-    <h2>Detail d'un wish... Titre de l'idée ici!</h2>
-    Contenu de la page "Detail" en cours de création
+    <h2>{{ wish.title }} </h2>
+    <div>{{ wish.description | nl2br }}</div><br>
+    <div class="wish-infos">{{ wish.author }}, le {{ wish.dateCreated | date('d-m-y') | nl2br }}</div>
+
 {% endblock %}
 

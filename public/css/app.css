@@ -62,6 +62,16 @@ footer {
     text-align: center;
     background-color: #EDDCD2;
 }
+footer a {
+    text-decoration: none;
+    color: inherit;
+}
+.footer-nav a {
+    margin-right: 2rem;
+}
+footer nav a:hover {
+    text-decoration: underline;
+}
 .team-members article {
     display: flex;
     flex-direction: column;
@@ -86,4 +96,22 @@ footer {
         margin-right: 0;
         margin-left: 20px;
     }
+}
+
+.wish-list article {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+}
+.wish-list article a {
+    text-decoration: none;
+    color: inherit;
+}
+.wish-list article a:hover {
+     color: #BC956B;
+ }
+.wish-infos {
+    font-size: 0.9rem;
+    font-style: italic;
+
 }
