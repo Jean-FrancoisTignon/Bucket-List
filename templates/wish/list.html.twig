@@ -1,17 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2>All wishes</h2>
+    <h2>Mes souhaits</h2>
     <section class="wish-list">
-        {% for wish in wishes %}
-            <article>
-                <a href="{{ path('app_wish_detail', {'id': wish.id}) }}" title="detail">{{ wish.title }}</a>
-            </article>
-        {% endfor %}
+        <table>
+            {% for wish in wishes %}
+                <tr>
+                    <td class="col-wish"><a href="{{ path('app_wish_detail', {'id': wish.id}) }}" title="detail">{{ wish.title }}</a></td>
+                    <td><a href=""><button type="button">Modifier</button></a></td>
+                    <td><a href=""><button type="button">Supprimer</button></a></td>
+                </tr>
+            {% endfor %}
+        </table>
     </section>
 {% endblock %}
 
 {% block title %}
-{{ parent() }} | All wishes
+{{ parent() }} | Mes souhaits
 {% endblock %}
 

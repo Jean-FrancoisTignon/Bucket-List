@@ -18,17 +18,17 @@ header {
 header h1 {
     margin: 0 0 10px 0;
 }
-header a {
+table a, header a {
     text-decoration: none;
     color: inherit;
 }
-.header-nav a {
-    margin-right: 2rem;
+header-nav a {
+    margin-right: 1.2rem;
 }
 main h2 {
     margin-top: 0;
 }
-header nav a:hover {
+table a:hover, header nav a:hover {
     text-decoration: underline;
 }
 .header-logo {
@@ -47,10 +47,11 @@ nav ul {
     display: flex;
     list-style: none;
     padding-left: 0;
+    margin: 0.5rem 0 0 0;
 }
 
 nav li {
-    margin-right: 1rem;
+    margin-right: 0rem;
 }
 main {
     flex: 1;
@@ -58,7 +59,7 @@ main {
     background-color: #FFF1E6;
 }
 footer {
-    padding: 2rem 0;
+    padding: 0.5rem 0;
     text-align: center;
     background-color: #EDDCD2;
 }
@@ -113,5 +114,37 @@ footer nav a:hover {
 .wish-infos {
     font-size: 0.9rem;
     font-style: italic;
+}
+.copyright {
+    margin: 1.5rem 0 0.5rem 0;
+    font-weight: bold;
+}
+label {
+    display:block;
+}
+input,
+textarea {
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    max-width: 50%;
+    width: 300px;
+}
+.flash {
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+}
+.flash-success {
+    color: darkseagreen;
+    border-style: solid;
+    border-width: 1px;
+    border-color: darkseagreen;
+}
 
+.col-wish {
+    width: 300px;
 }
