@@ -40,4 +40,10 @@ class MainController extends AbstractController
         // Utilisez $donnees comme une variable PHP contenant les données du fichier JSON
         return $this->render('main/about_us.html.twig', ["donnees" => $donnees]);
     }
+
+    #[Route('/contact', name: 'app_main_contact')]
+    public function contact()
+    {
+        return $this->render('main/contact.html.twig');
+    }
 }

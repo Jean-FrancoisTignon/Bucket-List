@@ -7,6 +7,7 @@ use App\Entity\Wish;
 use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,7 +20,7 @@ class WishType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'label' => 'Titre',
-                'required' => true
+                'required' => false,
             ])
             ->add('description', TextType::class, [
                 'label' => 'description',
@@ -27,13 +28,22 @@ class WishType extends AbstractType
             ])
             ->add('author',TextType::class, [
                 'label' => 'auteur',
-                'required' => true
+                'required' => false
             ])
             ->add('category', EntityType::class, [
                 'label' => 'Catégorie',
                 'class' => Category::class,
                 'choice_label'=> 'name'
-        ])
+            ])
+            ->add('validate', SubmitType::class, [
+                'label' => 'Valider',
+                'attr' => [ 'class' => 'btn' ]
+            ])
+
+            ->add('cancel', SubmitType::class, [
+                'label' => 'Annuler',
+                'attr' => [ 'class' => 'btn' ]
+            ])
           ;
     }
 

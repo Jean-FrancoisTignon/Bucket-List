@@ -1,15 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ parent() }} | Créer
+    {{ parent() }} | Modifier
 {% endblock %}
 
 {% block body %}
-    <h2>Ajouter votre souhait!</h2>
+    <h2>Modifier votre souhait!</h2>
     <div>
         {{ form_start(wishForm) }}
         {{ form_widget(wishForm) }}
         {{ form_end(wishForm) }}
     </div>
 {% endblock %}
+
+
+
 

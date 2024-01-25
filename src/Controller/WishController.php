@@ -33,14 +33,29 @@ class WishController extends AbstractController
 
         $wishForm = $this->createForm(WishType::class, $wish);
         $wishForm->handleRequest($request);
-        if ($wishForm->isSubmitted() && $wishForm->isValid()) {
-            $entityManager->persist($wish);
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Souhait ajouté avec succès !');
-            return $this->redirectToRoute('app_wish_detail', [
+        if ($wishForm->isSubmitted() &&
+            $wishForm->isValid() == false &&
+            $wishForm->getClickedButton() &&
+            'cancel' === $wishForm->getClickedButton()->getName()) {
+            return $this->redirectToRoute('app_wish_list', [
                 'id' => $wish->getId()
             ]);
+        }
+        if ($wishForm->isSubmitted() && $wishForm->isValid()) {
+            if ($wishForm->getClickedButton() && 'validate' === $wishForm->getClickedButton()->getName()) {
+                $entityManager->persist($wish);
+                $entityManager->flush();
+
+                $this->addFlash('success', 'Souhait ajouté avec succès !');
+                return $this->redirectToRoute('app_wish_detail', [
+                    'id' => $wish->getId()
+                ]);
+            }
+            else {
+                return $this->redirectToRoute('app_wish_list', [
+                    'id' => $wish->getId()
+                ]);
+            }
         }
 
         return $this->render('wish/create.html.twig', [
@@ -48,9 +63,9 @@ class WishController extends AbstractController
         ]);
     }
     #[Route('/detail/{id}', name: 'app_wish_detail')]
-    public function detail($id, WishRepository $wishRepository): Response
+    public function detail(Wish $wish, WishRepository $wishRepository): Response
     {
-        $wish = $wishRepository->find($id);
+        $wish = $wishRepository->find($wish);
         // s'il n'existe pas en bdd, on déclenche une erreur 404
         if (!$wish){
             throw $this->createNotFoundException('This wish do not exists! Sorry!');
@@ -62,21 +77,48 @@ class WishController extends AbstractController
     }
 
     #[Route('/delete/{id}', name: 'app_wish_delete')]
-    public function delete(Wish $wish, EntityManagerInterface $entityManager): Response
+    public function delete(Wish $wish, Request $request, EntityManagerInterface $entityManager): Response
     {
-        $entityManager->remove($wish);
-        $entityManager->flush();
+        $wishForm = $this->createForm(WishType::class, $wish);
+        $wishForm->handleRequest($request);
+        if ($wishForm->isSubmitted() && $wishForm->isValid()) {
+            if ($wishForm->getClickedButton() && 'validate' === $wishForm->getClickedButton()->getName()) {
+                $entityManager->remove($wish);
+                $entityManager->flush();
 
-        return $this->redirectToRoute('app_wish_list');
+                $this->addFlash('success', 'Suppression réussie !');
+            }
+
+            return $this->redirectToRoute('app_wish_list', [
+                'id' => $wish->getId()
+            ]);
+        }
+
+        return $this->render('wish/delete.html.twig', [
+            'wishForm' => $wishForm->createView()
+        ]);
     }
 
     #[Route('/update/{id}', name: 'app_wish_update')]
-    public function update(Wish $wish, EntityManagerInterface $entityManager): Response
+    public function update(Wish $wish, Request $request, EntityManagerInterface $entityManager): Response
     {
+        $wishForm = $this->createForm(WishType::class, $wish);
+        $wishForm->handleRequest($request);
+        if ($wishForm->isSubmitted() && $wishForm->isValid()) {
+            if ($wishForm->getClickedButton() && 'validate' === $wishForm->getClickedButton()->getName()) {
+                $wish->setDateCreated(new \DateTime());
+                $entityManager->persist($wish);
+                $entityManager->flush();
 
+                $this->addFlash('success', 'Modification réussie !');
+            }
+            return $this->redirectToRoute('app_wish_list', [
+                'id' => $wish->getId()
+            ]);
+        }
 
-        $entityManager->flush();
-
-        return $this->redirectToRoute('app_wish_list');
+        return $this->render('wish/update.html.twig', [
+            'wishForm' => $wishForm
+        ]);
     }
 }
