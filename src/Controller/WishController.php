@@ -60,4 +60,23 @@ class WishController extends AbstractController
             "wish" => $wish
         ]);
     }
+
+    #[Route('/delete/{id}', name: 'app_wish_delete')]
+    public function delete(Wish $wish, EntityManagerInterface $entityManager): Response
+    {
+        $entityManager->remove($wish);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_wish_list');
+    }
+
+    #[Route('/update/{id}', name: 'app_wish_update')]
+    public function update(Wish $wish, EntityManagerInterface $entityManager): Response
+    {
+
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_wish_list');
+    }
 }

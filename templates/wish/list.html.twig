@@ -6,9 +6,9 @@
         <table>
             {% for wish in wishes %}
                 <tr>
-                    <td class="col-wish"><a href="{{ path('app_wish_detail', {'id': wish.id}) }}" title="detail">{{ wish.title }}</a></td>
+                    <td class="col-wish"><a href="{{ path('app_wish_detail', {'id': wish.id}) }}" title="detail">{{ wish.title }} [{{ wish.category.name }}]</a></td>
                     <td><a href=""><button type="button">Modifier</button></a></td>
-                    <td><a href=""><button type="button">Supprimer</button></a></td>
+                    <td><a href="{{ path('app_wish_delete', {'id': wish.id}) }}" title="suppression"><button type="button">Supprimer</button></a></td>
                 </tr>
             {% endfor %}
         </table>

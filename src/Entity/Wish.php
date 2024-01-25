@@ -34,6 +34,10 @@ class Wish
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $dateCreated = null;
 
+    #[ORM\ManyToOne(targetEntity: Category::class,inversedBy: 'wishs', cascade: ['persist'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -95,6 +99,18 @@ class Wish
     public function setDateCreated(\DateTimeInterface $dateCreated): static
     {
         $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }

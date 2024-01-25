@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <h2>{{ wish.title }} </h2>
+    <h2>{{ wish.title }} [{{ wish.category.name }}]</h2>
     <div>{{ wish.description | nl2br }}</div><br>
     <div class="wish-infos">{{ wish.author }}, le {{ wish.dateCreated | date('d-m-y') | nl2br }}</div>
 {% endblock %}

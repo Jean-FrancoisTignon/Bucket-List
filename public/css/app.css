@@ -22,13 +22,13 @@ table a, header a {
     text-decoration: none;
     color: inherit;
 }
-header-nav a {
+.header-nav a {
     margin-right: 1.2rem;
 }
 main h2 {
     margin-top: 0;
 }
-table a:hover, header nav a:hover {
+header nav a:hover {
     text-decoration: underline;
 }
 .header-logo {
@@ -123,7 +123,8 @@ label {
     display:block;
 }
 input,
-textarea {
+textarea,
+select {
     margin-bottom: 1rem;
     box-sizing: border-box;
     max-width: 50%;
