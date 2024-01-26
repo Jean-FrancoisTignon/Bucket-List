@@ -1,0 +1,22 @@
+<div class="user-nav">
+
+        {% if (app.user) %}
+            <div>{{ app.user.pseudo }}</div>
+            <div class="user-logo">
+                <img src="{{ asset('img/logo.svg') }}" alt="Bucket-List" title="user-logo">
+            </div>
+            <div>
+                <a href="{{ path('app_logout') }}" title="Déconnexion">Déconnexion </a>
+            </div>
+
+            {% if is_granted("ROLE_ADMIN") %}
+                <div>
+                    <a href="{{ path('admin_tableauDeBord') }}" title="Admin">Admin</a>
+                </div>
+            {% endif %}
+        {% else %}
+            <a href="{{ path('app_login') }}" title="Connexion">Connexion</a>
+            <a href="{{ path('app_register') }}" title="Inscription">Inscription</a>
+        {% endif %}
+
+</div>

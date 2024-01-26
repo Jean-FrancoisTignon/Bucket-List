@@ -1,10 +1,17 @@
 <nav class="header-nav">
-    <ul>
-        <li><a href="{{ path('app_main_home') }}" title="Accueil">Accueil</a></li>
-        <li><a href="{{ path('app_wish_list') }}" title="Mes souhaits">Mes souhaits</a></li>
-        <li><a href="{{ path('app_wish_create') }}" title="Créer">Créer</a></li>
-        <li><a href="{{ path('app_main_test') }}" title="Test">Test</a></li>
-        <li><a href="{{ path('app_main_about_us') }}" title="Nous connaître">Nous connaître</a></li>
-        <li><a href="{{ path('app_main_contact') }}" title="Contact">Contact</a></li>
-    </ul>
+    <a href="{{ path('app_main_home') }}" title="Accueil">Accueil</a>
+    <a href="{{ path('app_wish_list') }}" title="Souhaits">Souhaits</a>
+
+    {% if (app.user) %}
+        <a href="{{ path('app_wish_create') }}" title="Créer">Créer</a>
+
+        {% if is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('admin_tableauDeBord') }}" title="Admin">Admin</a>
+        {% endif %}
+
+    {% endif %}
+
+    <a href="{{ path('app_main_test') }}" title="Test">Test</a>
+    <a href="{{ path('app_main_about_us') }}" title="Nous connaître">Nous connaître</a>
+    <a href="{{ path('app_main_contact') }}" title="Contact">Contact</a>
 </nav>

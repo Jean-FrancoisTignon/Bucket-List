@@ -17,18 +17,19 @@ header {
 }
 header h1 {
     margin: 0 0 10px 0;
+    flex: 1;
 }
 table a, header a {
     text-decoration: none;
     color: inherit;
 }
-.header-nav a {
+.header-nav a{
     margin-right: 1.2rem;
 }
 main h2 {
     margin-top: 0;
 }
-header nav a:hover {
+header nav a:hover{
     text-decoration: underline;
 }
 .header-logo {
@@ -39,16 +40,17 @@ header nav a:hover {
     max-width: 42px;
     margin-right: 5px;
 }
-
 .header-nav {
     display: flex;
 }
-nav ul {
+
+nav ul  {
     display: flex;
     list-style: none;
     padding-left: 0;
     margin: 0.5rem 0 0 0;
 }
+
 
 nav li {
     margin-right: 0rem;
@@ -173,4 +175,23 @@ tr {
 #wish ul  {
     margin: 0;
     padding-left: 20px;
+}
+.header-top {
+    display: flex;
+    justify-content: space-between;
+}
+.user-nav a {
+    margin-left: 1rem;
+}
+.user-nav a:hover{
+    text-decoration: underline;
+}
+
+
+.user-logo img {
+    max-width: 20px;
+    margin-right: 5px;
+}
+.user-nav {
+    text-align: center;
 }

@@ -31,9 +31,12 @@
 
 <header>
     <div class="container">
-        <h1 class="header-logo">
-            <a href="{{ path('app_main_home') }}"><img src="{{ asset('img/logo.svg') }}" alt="Bucket-List" title="Retour à la page d'accueil"> Bucket-List</a>
-        </h1>
+        <div class="header-top">
+            <h1 class="header-logo">
+                <a href="{{ path('app_main_home') }}"><img src="{{ asset('img/logo.svg') }}" alt="Bucket-List" title="Retour à la page d'accueil"> Bucket-List</a>
+            </h1>
+            {{ include('inc/usernav.html.twig') }}
+        </div>
         {{ include('inc/nav.html.twig') }}
     </div>
 </header>

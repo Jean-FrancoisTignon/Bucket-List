@@ -1,14 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2>Mes souhaits</h2>
+    <h2>Souhaits</h2>
     <section class="wish-list">
         <table>
             {% for wish in wishes %}
                 <tr>
-                    <td class="col-wish"><a href="{{ path('app_wish_detail', {'id': wish.id}) }}" title="detail">{{ wish.title }} [{{ wish.category.name }}]</a></td>
-                    <td class="col-btn"><a href="{{ path('app_wish_update', {'id': wish.id}) }}" title="modification"><button type="button" class="btn btn-modifier">Modifier</button></a></td>
-                    <td class="col-btn"><a href="{{ path('app_wish_delete', {'id': wish.id}) }}" title="suppression"><button type="button" class="btn btn-supprimer">Supprimer</button></a></td>
+                    <td class="col-wish"><a href="{{ path('app_wish_detail', {'id': wish.id}) }}" title="detail" style="font-weight: bold">{{ wish.title }} </a> [{{ wish.category.name }}]</td>
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <td class="col-btn"><a href="{{ path('app_wish_update', {'id': wish.id}) }}" title="modification"><button type="button" class="btn btn-modifier">Modifier</button></a></td>
+                        <td class="col-btn"><a href="{{ path('app_wish_delete', {'id': wish.id}) }}" title="suppression"><button type="button" class="btn btn-supprimer">Supprimer</button></a></td>
+                    {% endif %}
+
                 </tr>
             {% endfor %}
         </table>
@@ -16,6 +19,6 @@
 {% endblock %}
 
 {% block title %}
-{{ parent() }} | Mes souhaits
+{{ parent() }} | Souhaits
 {% endblock %}
 
