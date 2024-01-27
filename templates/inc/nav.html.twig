@@ -4,11 +4,6 @@
 
     {% if (app.user) %}
         <a href="{{ path('app_wish_create') }}" title="Créer">Créer</a>
-
-        {% if is_granted("ROLE_ADMIN") %}
-            <a href="{{ path('admin_tableauDeBord') }}" title="Admin">Admin</a>
-        {% endif %}
-
     {% endif %}
 
     <a href="{{ path('app_main_test') }}" title="Test">Test</a>
