@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {{ parent() }} | Souhaits
+{% endblock %}
+
 {% block body %}
     <h2>Souhaits</h2>
     <section class="wish-list">
@@ -9,31 +13,47 @@
                 <th class="col-wish1">liste</th>
                 <th class="col-wish2">catégories</th>
                 <th class="col-wish3">Date</th>
-                <th class="col-wish4">Publié</th>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <th class="col-wish4">Publié</th>
+                {% endif %}
             </tr>
             </thead>
             {% for wish in wishes %}
+                {% if (wish.isPublished == 1) %}
+                    <tr>
+                        <td class="col-wish1">
+                            <a href="{{ path('app_wish_detail', {'id': wish.id}) }}" title="detail" style="font-weight: bold"> {{ wish.title }} </a>
+                        </td>
+                        <td class="col-wish2"> {{ wish.category.name }} </td>
+                        <td class="col-wish3"> {{ wish.dateCreated | date('d-m-y') }} </td>
 
-                <tr>
-                    <td class="col-wish1">
-                        <a href="{{ path('app_wish_detail', {'id': wish.id}) }}" title="detail" style="font-weight: bold"> {{ wish.title }} </a>
-                    </td>
-                    <td class="col-wish2"> {{ wish.category.name }} </td>
-                    <td class="col-wish3"> {{ wish.dateCreated | date('d-m-y') }} </td>
-
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <td class="col-wish4"><img src="{{ asset('img/green-ok.png') }}" alt="publié"></td>
+                            <td class="col-btn"><a href="{{ path('app_wish_update', {'id': wish.id}) }}" title="modification"><button type="button" class="btn btn-modifier">Modifier</button></a></td>
+                            <td class="col-btn"><a href="{{ path('app_wish_delete', {'id': wish.id}) }}" title="suppression"><button type="button" class="btn btn-supprimer">Supprimer</button></a></td>
+                        {% endif %}
+                    </tr>
+                {% else %}
                     {% if is_granted("ROLE_ADMIN") %}
-                        <td class="col-wish4"> {{ wish.isPublished }} </td>
-                        <td class="col-btn"><a href="{{ path('app_wish_update', {'id': wish.id}) }}" title="modification"><button type="button" class="btn btn-modifier">Modifier</button></a></td>
-                        <td class="col-btn"><a href="{{ path('app_wish_delete', {'id': wish.id}) }}" title="suppression"><button type="button" class="btn btn-supprimer">Supprimer</button></a></td>
+                        <tr>
+                            <td class="col-wish1">
+                                <a href="{{ path('app_wish_detail', {'id': wish.id}) }}" title="detail" style="font-weight: bold"> {{ wish.title }} </a>
+                            </td>
+                            <td class="col-wish2"> {{ wish.category.name }} </td>
+                            <td class="col-wish3"> {{ wish.dateCreated | date('d-m-y') }} </td>
+                            <td class="col-wish4"><img src="{{ asset('img/cross-check.webp') }}" alt="non publié"></td>
+                            <td class="col-btn"><a href="{{ path('app_wish_update', {'id': wish.id}) }}" title="modification"><button type="button" class="btn btn-modifier">Modifier</button></a></td>
+                            <td class="col-btn"><a href="{{ path('app_wish_delete', {'id': wish.id}) }}" title="suppression"><button type="button" class="btn btn-supprimer">Supprimer</button></a></td>
+                        </tr>
                     {% endif %}
-
-                </tr>
+                {% endif %}
             {% endfor %}
         </table>
     </section>
 {% endblock %}
 
-{% block title %}
-{{ parent() }} | Souhaits
+{% block category %}
+
 {% endblock %}
+
 

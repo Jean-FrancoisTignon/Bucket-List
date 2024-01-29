@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Wish;
 use App\Form\WishType;
 use App\Repository\WishRepository;
 use App\Service\Censurator;
 use Doctrine\ORM\EntityManagerInterface;
+use PhpParser\Node\Name;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +20,10 @@ class WishController extends AbstractController
     #[Route('/', name: 'app_wish_list')]
     public function list(WishRepository $wishRepository): Response
     {
-        $wishes = $wishRepository->findBy(["isPublished" => true],["dateCreated" => "DESC"], 20);
+        //$wishes = $wishRepository->findBy(["isPublished" => true], ["dateCreated" => "DESC"],20);
+        $wishes = $wishRepository->findAll();
+
+        //$wishes = $wishRepository->findBy([category.Name::( 'Sport' )], 20);
 
         return $this->render('wish/list.html.twig',[
             "wishes" => $wishes

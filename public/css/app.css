@@ -162,6 +162,11 @@ select {
     width: 75px;
     text-align: center;
 }
+.col-wish4 img {
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+}
 .col-btn {
     padding: 0 5px;
 }
@@ -202,6 +207,7 @@ tr {
 }
 .user-logo {
     display: block;
+    font-weight: bold;
 }
 .user-logo img {
     max-width: 12px;
@@ -209,13 +215,30 @@ tr {
 }
 .user-nav div {
     text-align: center;
+
     margin: 5px auto;
 }
 .remember {
     display:flex;
-
 }
 .remember input {
     margin: 2px 0 12px 0;
     width: 50px;
 }
+
+#wish > :nth-child(6) {
+    display:flex;
+}
+#wish > :nth-child(6) input{
+    margin: 2px 0 12px 0;
+    width: 50px;
+}
+.container > div > :nth-child(6) {
+    display:flex;
+}
+.container > div > :nth-child(6) input{
+    margin: 2px 0 12px 0;
+    width: 50px;
+}
+
+
