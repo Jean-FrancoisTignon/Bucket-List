@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Wish;
 use App\Form\WishType;
 use App\Repository\WishRepository;
+use App\Service\Censurator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +26,10 @@ class WishController extends AbstractController
     }
 
     #[Route('/create', name: 'app_wish_create', methods: ['POST', 'GET'])]
-    public function create(Request $request, EntityManagerInterface $entityManager): Response
+    public function create(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        Censurator $censurator): Response
     {
         $wish = new Wish();
         $wish->setDateCreated(new \DateTime());
@@ -33,6 +37,7 @@ class WishController extends AbstractController
 
         $wishForm = $this->createForm(WishType::class, $wish);
         $wishForm->handleRequest($request);
+
         if ($wishForm->isSubmitted() &&
             $wishForm->isValid() == false &&
             $wishForm->getClickedButton() &&
@@ -43,6 +48,10 @@ class WishController extends AbstractController
         }
         if ($wishForm->isSubmitted() && $wishForm->isValid()) {
             if ($wishForm->getClickedButton() && 'validate' === $wishForm->getClickedButton()->getName()) {
+
+                // Appel au service de censure
+                $wish->setDescription($censurator->purify($wish->getDescription()));
+
                 $entityManager->persist($wish);
                 $entityManager->flush();
 
