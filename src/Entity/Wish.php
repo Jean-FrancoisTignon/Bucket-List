@@ -17,7 +17,7 @@ class Wish
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message:'le titre est obligatoire.')]
-    #[Assert\Length(min:'5', minMessage:'5 caractères minimum')]
+    #[Assert\Length(min:5, minMessage: '5 caractères minimum')]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -25,7 +25,7 @@ class Wish
 
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank(message:'le nom est obligatoire.')]
-    #[Assert\Length(min:'2', minMessage:'2 caractères minimum')]
+    #[Assert\Length(min:2, minMessage:'2 caractères minimum')]
     private ?string $author = null;
 
     #[ORM\Column]

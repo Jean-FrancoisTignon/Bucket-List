@@ -24,7 +24,7 @@ class WishController extends AbstractController
         ]);
     }
 
-    #[Route('/create', name: 'app_wish_create')]
+    #[Route('/create', name: 'app_wish_create', methods: ['POST', 'GET'])]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
         $wish = new Wish();
@@ -59,7 +59,8 @@ class WishController extends AbstractController
         }
 
         return $this->render('wish/create.html.twig', [
-            'wishForm' => $wishForm
+            'wishForm' => $wishForm,
+            'wish' => $wish
         ]);
     }
     #[Route('/detail/{id}', name: 'app_wish_detail')]

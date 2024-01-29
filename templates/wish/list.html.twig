@@ -4,10 +4,25 @@
     <h2>Souhaits</h2>
     <section class="wish-list">
         <table>
+            <thead>
+            <tr>
+                <th class="col-wish1">liste</th>
+                <th class="col-wish2">catégories</th>
+                <th class="col-wish3">Date</th>
+                <th class="col-wish4">Publié</th>
+            </tr>
+            </thead>
             {% for wish in wishes %}
+
                 <tr>
-                    <td class="col-wish"><a href="{{ path('app_wish_detail', {'id': wish.id}) }}" title="detail" style="font-weight: bold">{{ wish.title }} </a> [{{ wish.category.name }}]</td>
+                    <td class="col-wish1">
+                        <a href="{{ path('app_wish_detail', {'id': wish.id}) }}" title="detail" style="font-weight: bold"> {{ wish.title }} </a>
+                    </td>
+                    <td class="col-wish2"> {{ wish.category.name }} </td>
+                    <td class="col-wish3"> {{ wish.dateCreated | date('d-m-y') }} </td>
+
                     {% if is_granted("ROLE_ADMIN") %}
+                        <td class="col-wish4"> {{ wish.isPublished }} </td>
                         <td class="col-btn"><a href="{{ path('app_wish_update', {'id': wish.id}) }}" title="modification"><button type="button" class="btn btn-modifier">Modifier</button></a></td>
                         <td class="col-btn"><a href="{{ path('app_wish_delete', {'id': wish.id}) }}" title="suppression"><button type="button" class="btn btn-supprimer">Supprimer</button></a></td>
                     {% endif %}

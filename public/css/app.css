@@ -148,8 +148,19 @@ select {
     border-color: darkseagreen;
 }
 
-.col-wish {
-    width: 300px;
+.col-wish1 {
+    width: 200px;
+}
+.col-wish2 {
+    width: 150px;
+}
+.col-wish3 {
+    width: 75px;
+    text-align: center;
+}
+.col-wish4 {
+    width: 75px;
+    text-align: center;
 }
 .col-btn {
     padding: 0 5px;
