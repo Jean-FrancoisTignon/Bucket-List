@@ -30,7 +30,7 @@ class WishController extends AbstractController
         ]);
     }
 
-    #[Route('/create', name: 'app_wish_create', methods: ['POST', 'GET'])]
+    #[Route('/create', name: 'app_wish_create')]
     public function create(
         Request $request,
         EntityManagerInterface $entityManager,

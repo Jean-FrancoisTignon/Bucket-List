@@ -8,11 +8,20 @@
     <h2>Supprimer ce souhait :</h2>
     <div>
         {{ form_start(wishForm) }}
-        {{ form_widget(wishForm) }}
+        {{ form_row(wishForm.title) }}
+
+        {{ form_row(wishForm.description) }}
+        {{ form_row(wishForm.category) }}
+        {{ form_row(wishForm.author) }}
+
+        {% if is_granted("ROLE_ADMIN") %}
+            {{ form_row(wishForm.dateCreated) }}
+            {{ form_row(wishForm.isPublished) }}
+        {% endif %}
+
+        {{ form_row(wishForm.validate) }}
+        {{ form_row(wishForm.cancel) }}
         {{ form_end(wishForm) }}
     </div>
-
-
-
 {% endblock %}
 

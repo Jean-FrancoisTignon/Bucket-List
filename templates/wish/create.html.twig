@@ -7,16 +7,22 @@
 {% block body %}
     <h2>Ajouter votre souhait :</h2>
     <div>
-            {{ form_row(wishForm.title) }}
-            {{ form_row(wishForm.description) }}
-            {{ form_row(wishForm.category) }}
-            {{ form_row(wishForm.author) }}
-            {% if is_granted("ROLE_ADMIN") %}
-                {{ form_row(wishForm.dateCreated) }}
-                {{ form_row(wishForm.isPublished) }}
-            {% endif %}
-            {{ form_row(wishForm.validate) }}
-            {{ form_row(wishForm.cancel) }}
+        {{ form_start(wishForm) }}
+            <div id="wish">
+                {{ form_row(wishForm.title) }}
+                {{ form_row(wishForm.description) }}
+                {{ form_row(wishForm.category) }}
+                {{ form_row(wishForm.author) }}
+
+                    {{ form_row(wishForm.dateCreated) }}
+                    {{ form_row(wishForm.isPublished) }}
+
+                {{ form_row(wishForm.validate) }}
+                {{ form_row(wishForm.cancel) }}
+            </div>
+        {{ form_end(wishForm) }}
     </div>
+
+
 {% endblock %}
 

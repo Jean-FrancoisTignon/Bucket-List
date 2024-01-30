@@ -147,12 +147,16 @@ select {
     border-width: 1px;
     border-color: darkseagreen;
 }
-
+.col-wish0 {
+    width: 70px;
+    text-align: center;
+}
 .col-wish1 {
-    width: 200px;
+    width: 220px;
+    text-align: center;
 }
 .col-wish2 {
-    width: 150px;
+    width: 200px;
 }
 .col-wish3 {
     width: 75px;
@@ -233,12 +237,6 @@ tr {
     margin: 2px 0 12px 0;
     width: 50px;
 }
-.container > div > :nth-child(6) {
-    display:flex;
-}
-.container > div > :nth-child(6) input{
-    margin: 2px 0 12px 0;
-    width: 50px;
-}
+
 
 

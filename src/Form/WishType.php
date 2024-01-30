@@ -56,7 +56,7 @@ class WishType extends AbstractType
                 'attr' => [ 'class' => 'btn' ]
             ])
             ->add('cancel', SubmitType::class, [
-                'label' => 'Annuler',
+                'label' => 'Retour',
                 'attr' => [ 'class' => 'btn' ]
             ])
           ;

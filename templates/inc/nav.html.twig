@@ -2,11 +2,16 @@
     <a href="{{ path('app_main_home') }}" title="Accueil">Accueil</a>
     <a href="{{ path('app_wish_list') }}" title="Souhaits">Souhaits</a>
 
-    {% if (app.user) %}
-        <a href="{{ path('app_wish_create') }}" title="Créer">Créer</a>
+
+
+    {% if is_granted("ROLE_ADMIN") %}
+        <a href="{{ path('app_category_index') }}" title="Categories">Categories</a>
+    {% else %}
+        {% if (app.user) %}
+            <a href="{{ path('app_wish_create') }}" title="Créer">Créer</a>
+        {% endif %}
     {% endif %}
 
-    <a href="{{ path('app_main_test') }}" title="Test">Test</a>
     <a href="{{ path('app_main_about_us') }}" title="Nous connaître">Nous connaître</a>
     <a href="{{ path('app_main_contact') }}" title="Contact">Contact</a>
 </nav>
