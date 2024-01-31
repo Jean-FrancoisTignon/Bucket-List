@@ -4,7 +4,41 @@
 
 {% block body %}
     <h2>Tableau de bord</h2>
-    <p> à imaginer </p>
+
+    {% if (app.user) %}
+        <div>
+            <table>
+                <tr>
+                    <th style="width: 150px">Pseudo :</th>
+                    <td>{{ app.user.pseudo }}</td>
+                </tr>
+                <tr>
+                    <th style="width: 150px">Email :</th>
+                    <td>{{ app.user.email }}</td>
+                </tr>
+                <tr>
+                    <th style="width: 150px">Mot de passe :</th>
+                    <td>{{ app.user.password }}</td>
+                </tr>
+            </table><br><br>
+            <h2>Bucket-List ({{ nbWishes }})</h2>
+            <table>
+                {% for item in categoriesWishes %}
+                <tr>
+
+
+
+                    <th style="width: 200px">{{  }}</th>
+                    <td>{{ item }} souhaits</td>
+
+
+
+
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% endif %}
 
 {% endblock %}
 

@@ -25,18 +25,22 @@ class WishType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'Titre',
                 'required' => false,
-                'attr' => [ 'placeholder' => 'Votre titre'],
-                /*'help' => 'Renseigner le titre (max. 250 caractères)'*/
+                'help' => '(entre 2 et 50 caractères)',
+                'attr' => [ 'placeholder' => 'Votre titre',
+                            'class' => 'help-attr']
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
                 'required' => false,
-                'attr' => [ 'placeholder' => 'votre description'],
+                'attr' => [ 'placeholder' => 'votre description',
+                            'rows' => 5,
+                            'cols' => 20],
             ])
             ->add('author',TextType::class, [
                 'label' => 'Auteur',
                 'required' => false,
                 'attr' => [ 'placeholder' => 'Votre pseudo'],
+                'help' => '(entre 2 et 50 caractères)'
             ])
             ->add('category', EntityType::class, [
                 'label' => 'Catégorie',

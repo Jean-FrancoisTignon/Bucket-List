@@ -16,7 +16,9 @@ class CategoryType extends AbstractType
             ->add('name', TextType::class, [
                         'label' => 'Nom',
                         'required' => false,
-                        'attr' => [ 'placeholder' => 'Nom de la catégorie'],
+                        'help' => '(25 caractères max.)',
+                        'attr' => [ 'placeholder' => 'Nom de la catégorie',
+                                    'class' => 'help-attr']
                 ]);
     }
 

@@ -4,18 +4,34 @@
 
 {% block body %}
     <h2>Mon compte</h2>
-    <p> en construction... </p>
+
+    {% if (app.user) %}
     <div>
         <table>
             <tr>
-                <th>Pseudo :</th>
-                <td>en attente du pseudo</td>
+                <th style="width: 150px">Pseudo :</th>
+                <td>{{ app.user.pseudo }}</td>
             </tr>
             <tr>
-                <th>Email :</th>
-                <td>en attente de l'email</td>
+                <th style="width: 150px">Email :</th>
+                <td>{{ app.user.email }}</td>
             </tr>
+            <tr>
+                <th style="width: 150px">Mot de passe :</th>
+                <td>{{ app.user.password }}</td>
+            </tr>
+        </table><br><br>
+        <h2>Ma bucket-list ({{ nbWish }})</h2>
+        <table>
+            {% for wish in wishes %}
+                <tr>
+                    <td style="width: 75px" >{{ wish.dateCreated | date('d-m-y') }}</td>
+                    <td style="width: 150px">{{ wish.title }}</td>
+                    <td>{{ wish.description }}</td>
+                </tr>
+            {% endfor %}
         </table>
     </div>
+    {% endif %}
 
 {% endblock %}

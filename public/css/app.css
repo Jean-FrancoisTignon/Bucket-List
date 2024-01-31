@@ -230,13 +230,22 @@ tr {
     width: 50px;
 }
 
-#wish > :nth-child(6) {
+#wish > :nth-child(6), .container > div > form > :nth-child(6) {
     display:flex;
 }
-#wish > :nth-child(6) input{
+#wish > :nth-child(6), .container > div > form > :nth-child(6) input{
     margin: 2px 0 12px 0;
     width: 50px;
 }
 
+.help-text {
+    color:purple;
+    font-style: italic;
+    font-size: 12px;
+    margin: 2px 0 15px 0;
+}
+#wish_title, #wish_author, #category_name{
+    margin-bottom: 0;
+}
 
 
