@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Category;
 use App\Entity\Wish;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -40,7 +41,11 @@ class WishType extends AbstractType
             ->add('category', EntityType::class, [
                 'label' => 'Catégorie',
                 'class' => Category::class,
-                'choice_label'=> 'name'
+                'placeholder' => 'Catégorie',
+                'choice_label'=> 'name',
+                'query_builder' => function (CategoryRepository $categoryRepository) {
+                    return $categoryRepository->createQueryBuilder('c')->orderBy('c.name', 'ASC');
+                }
             ])
             ->add('dateCreated', DateType::class, [
                 'label' => 'Crée le',

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Erreur 404 | {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h2>Oups ! erreur 404...</h2>
+    <h2>On vous souhaite de retrouver au plus vite votre chemin.</h2>
+    <div>
+        <a href="{{ path('app_main_home') }}" title="Retour à la page d\'accueil"><button type="button" class="btn btn-modifier">Retour à la page d'accueil</button></a>
+    </div>
+{% endblock %}

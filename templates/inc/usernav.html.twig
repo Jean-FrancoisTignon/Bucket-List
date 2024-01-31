@@ -9,9 +9,17 @@
                 <div>
                     <a href="{{ path('admin_tableauDeBord') }}" title="Admin">Admin</a>
                 </div>
-                {% else %}
+            {% else %}
                 <div>
-                    <a href="#" title="Mon compte">Mon compte</a>
+
+
+
+<!--
+                    <a href="{{ path('app_user_index') }}" title="Mon compte">Mon compte</a>
+-->
+                    <a href="{{ path('app_user_index') }}" title="Mon compte">Mon compte</a>
+
+
                 </div>
             {% endif %}
 

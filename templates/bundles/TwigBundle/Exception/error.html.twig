@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Erreur ! | {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h2>Oups ! erreur...</h2>
+
+    <div>
+        <a href="{{ path('app_main_home') }}" title="Retour à la page d\'accueil"><button type="button" class="btn btn-modifier">Retour à la page d'accueil</button></a>
+    </div>
+
+{% endblock %}
