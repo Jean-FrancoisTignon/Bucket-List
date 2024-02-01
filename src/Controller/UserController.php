@@ -22,7 +22,10 @@ class UserController extends AbstractController
             $user = $this->getUser();
         }
         */
-
+    // en guise d'exemple car:
+    // la table USER a comme arguments un email, un pseud
+    // alors que la table WISH prend le nom de l'auteur de l'article.
+    // Bref essai avec author = 'Moi'
         $wishes = $wishRepository->findBy(['author' => 'Moi'], ["dateCreated" => "DESC"],20);
         $nbWish = count($wishes);
         return $this->render('user/index.html.twig', [

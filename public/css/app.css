@@ -132,6 +132,7 @@ select {
     max-width: 50%;
     width: 300px;
 }
+
 .flash {
     padding: 10px;
     font-weight: bold;
@@ -233,7 +234,7 @@ tr {
 #wish > :nth-child(6), .container > div > form > :nth-child(6) {
     display:flex;
 }
-#wish > :nth-child(6), .container > div > form > :nth-child(6) input{
+#wish > :nth-child(6) input, .container > div > form > div> :nth-child(6) input, .container > div > form > :nth-child(6) input{
     margin: 2px 0 12px 0;
     width: 50px;
 }
