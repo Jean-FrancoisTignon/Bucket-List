@@ -27,10 +27,8 @@ class AdminController extends AbstractController
 
         $categoriesWishes = [];
 
-
         for ($i = 0 ; $i < $nbCategories; $i++)
         {
-
             $categoryRepository = $manager->getRepository(Category::class);
             $category = $categoryRepository->findBy(['id' => $i]);
             $categoriesWishes[$i] = 0;

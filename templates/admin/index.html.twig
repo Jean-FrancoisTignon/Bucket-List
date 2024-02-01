@@ -25,15 +25,8 @@
             <table>
                 {% for item in categoriesWishes %}
                 <tr>
-
-
-
-                    <th style="width: 200px">{{  }}</th>
-                    <td>{{ item }} souhaits</td>
-
-
-
-
+                    <th style="width: 200px; text-align:left">{{ categories[loop.index - 1].name }} :</th>
+                    <td>{{ item }}  {{ item > 1 ? 'souhaits' : 'souhait' }} </td>
                 </tr>
                 {% endfor %}
             </table>
