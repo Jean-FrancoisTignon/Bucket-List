@@ -20,8 +20,46 @@ class WishRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Wish::class);
     }
+    public function findByIdSup($value): array
+    {
+        return $this->createQueryBuilder('w')
+                    ->andWhere('w.id > :val')
+                    ->setParameter('val', $value)
+                    ->orderBy('w.id', 'ASC')
+                    ->setMaxResults(10)
+                    ->getQuery()
+                    ->getResult();
+      }
 
-//    /**
+    public function findByCat($cat): array
+    {
+        return $this->createQueryBuilder('w')
+            ->andWhere('w.category = :val')
+            ->setParameter('val', $cat)
+            ->orderBy('w.dateCreated', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByDateRecentAncien(): array
+    {
+        return $this->createQueryBuilder('w')
+            ->orderBy('w.dateCreated', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery()
+            ->getResult();
+    }
+    public function findByCategorie(): array
+    {
+        return $this->createQueryBuilder('w')
+            ->orderBy('w.category', 'DESC')
+            ->setMaxResults(50)
+            ->getQuery()
+            ->getResult();
+    }
+
+    //    /**
 //     * @return Wish[] Returns an array of Wish objects
 //     */
 //    public function findByExampleField($value): array

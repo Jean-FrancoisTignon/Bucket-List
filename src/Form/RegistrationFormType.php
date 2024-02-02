@@ -28,7 +28,7 @@ class RegistrationFormType extends AbstractType
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
                 'first_options'  => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Répétez le mot de passe'],
+                'second_options' => ['label' => 'Confirmation'],
 
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],

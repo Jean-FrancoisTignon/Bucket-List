@@ -20,12 +20,18 @@ class WishController extends AbstractController
     #[Route('/', name: 'app_wish_list')]
     public function list(WishRepository $wishRepository): Response
     {
-        //$wishes = $wishRepository->findBy(["isPublished" => true], ["dateCreated" => "DESC"],20);
-        //$wishes = $wishRepository->findBy(["isPublished" => true], ["dateCreated" => "DESC"],20);
-        //$wishes = $wishRepository->findBy(['category' => 'Sport' )], 20);
+        // $wishes = $wishRepository->findByIdSup(5);     fonctionne
 
-        $wishes = $wishRepository->findAll();
+        // $cat = new Category();
+        // $cat->setId(1);
+        // $wishes = $wishRepository->findByCat($cat);     fonctionne
 
+        $wishes = $wishRepository->findByDateRecentAncien();     // fonctionne
+
+        // $wishes = $wishRepository->findByCategorie();     fonctionne
+
+
+        /*$wishes = $wishRepository->findAll();
         usort($wishes, function ($a, $b) {
             // Remplacez 'dateCreated' par la propriété sur laquelle vous souhaitez trier
             $dateA = $a->getDateCreated();
@@ -35,9 +41,8 @@ class WishController extends AbstractController
             if ($dateA == $dateB) {
                 return 0;
             }
-
             return ($dateA < $dateB) ? -1 : 1;
-        });
+        });*/                                       // fonctionne mais compliqué !
 
         return $this->render('wish/list.html.twig',[
             "wishes" => $wishes

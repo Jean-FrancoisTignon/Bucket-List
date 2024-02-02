@@ -10,7 +10,7 @@ class Censurator
         foreach (self::motsInterdits as $motsInterdit)
         {
             $remplacement = str_repeat('*',mb_strlen($motsInterdit));
-            $string = str_replace($motsInterdit, $remplacement, $string);
+            $string = str_ireplace($motsInterdit, $remplacement, $string);  // i(replace) pour insensible à la casse
         }
 
         return $string;

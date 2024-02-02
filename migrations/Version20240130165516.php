@@ -14,7 +14,7 @@ final class Version20240130165516 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Première migration pour la mise en production';
     }
 
     public function up(Schema $schema): void
